@@ -1,0 +1,13 @@
+# secrets — never commit API keys
+.env
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# sandbox runtime (generated binaries/figures)
+bioworld/workspace/artifacts/*.joblib
+bioworld/workspace/artifacts/*.png
