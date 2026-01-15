@@ -1,0 +1,4 @@
+model,auc_mean,auc_std,n_folds,cpu_only,peak_ram_mb
+logreg,0.804,0.0396,5,True,na
+rf,0.7517,0.0409,5,True,na
+histgb,0.7716,0.0388,5,True,na
