@@ -27,7 +27,7 @@ def profile_dataset(path: str) -> str:
             "target_distribution": info["target_distribution"],
             "head": info["head"][:2],
         }
-        return json.dumps(slim, indent=2, default=str)
+        return json.dumps(slim, indent=2, default=str)[:1500]
     except Exception as e:  # pragma: no cover
         return f"[profile error] {e!r}"
 
@@ -56,7 +56,7 @@ def run_code(code: str) -> str:
         parts.append("--- new artifacts ---\n" + "\n".join(r.artifacts))
     if r.metrics:
         parts.append("--- metrics.json ---\n" + json.dumps(r.metrics, indent=2, default=str))
-    return "\n\n".join(parts)
+    return "\n\n".join(parts)[-3500:]
 
 
 @tool
@@ -100,8 +100,8 @@ def web_search(query: str) -> str:
                 out.append("ANSWER: " + res["answer"])
             for r in res.get("results", [])[:4]:
                 out.append(f"- {r.get('title','')}\n  {r.get('url','')}\n  {r.get('content','')[:300]}")
-            return "\n".join(out)
-        return str(res)
+            return "\n".join(out)[:4000]
+        return str(res)[:4000]
     except Exception as e:  # pragma: no cover
         return f"[search error] {e!r}"
 
