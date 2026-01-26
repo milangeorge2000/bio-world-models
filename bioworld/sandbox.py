@@ -149,6 +149,10 @@ def run_code(code: str, timeout: int | None = None) -> RunResult:
         out = out[:MAX_RETURN] + f"\n...[truncated, saved to stdout in {script.name}]"
     if len(err) > MAX_RETURN:
         err = err[:MAX_RETURN] + "\n...[truncated]"
+    # Clear single-run metrics so each report is fresh.
+    mp = ARTIFACTS_DIR / "metrics.json"
+    if mp.exists():
+        mp.unlink()
     return RunResult(ok, out, err, rc, artifacts, metrics, wall)
 
 
